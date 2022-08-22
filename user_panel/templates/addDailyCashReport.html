@@ -1,0 +1,121 @@
+{% extends 'bash.html' %}
+{% load static %}
+{% block content %}
+<link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<style>
+.home-content .sales-boxes .recent-sales{
+  width: 97%;
+  background: #fff;
+  padding: 20px 30px;
+  margin: 0 20px;
+  border-radius: 12px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+</style>
+
+<section class="home-section">
+    <nav>
+      <div class="sidebar-button">
+        <i class='bx bx-menu sidebarBtn'></i>
+        <span class="dashboard">CASH REPORT</span>
+      </div>
+      <div class="search-box">
+        <input required type="text" placeholder="Search...">
+        <i class='bx bx-search' ></i>
+      </div>
+      <div class="profile-details">
+            <i class="fa fa-user" aria-hidden="true" style="margin-left:40px;"></i>
+            <form action="{% url 'logout' %}" method="post" id="my_form">
+            {% csrf_token %}
+            <button type="submit" ></button>
+            <a href="javascript:{}" onclick="document.getElementById('my_form').submit();"style="margin-left:10px; text-decoration:none;"> Logout </a>
+
+            </form>
+        </div>
+    </nav>
+
+    <div class="home-content">
+
+
+      <div class="sales-boxes">
+        <div class="recent-sales box">
+          <div class="title">Add Daily Cash Report</div>
+          <hr>
+          <div class="sales-details">
+            <form method="post" class="post-form" action="{% url 'addDailyCashReport' %}" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="container">
+                <br>
+                <div class="form-group row">
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label">Date:</label>
+                        <div class="col-sm-3" >
+                           <input required type="date" name="date" id="date" style="padding:5px; width:300px">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label">Aadhar Cash:</label>
+                        <div class="col-sm-6">
+                          <input required type="text" name="aadharCash" id="aadharCash" style="padding:5px; width:300px">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label">CBP Cash:</label>
+                        <div class="col-sm-6">
+                          <input required type="text" name="CBPcash" id="CBPcash" style="padding:5px; width:300px">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label">C Top Cash:</label>
+                        <div class="col-sm-6">
+                          <input required type="text" name="C_TopCash" id="C_TopCash" style="padding:5px; width:300px">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label">Normal Sim Cash:</label>
+                        <div class="col-sm-6">
+                          <input required type="text" name="NormalSimCash" id="NormalSimCash" style="padding:5px; width:300px">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label">Mnp Sim Cash:</label>
+                        <div class="col-sm-6">
+                          <input required type="text" name="MnpSimCash" id="MnpSimCash" style="padding:5px; width:300px">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label">Swapping Sim Cash:</label>
+                        <div class="col-sm-6">
+                          <input required type="text" name="SwappingSimCash" id="SwappingSimCash" style="padding:5px; width:300px">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label">Postpaid Sim Cash:</label>
+                        <div class="col-sm-6">
+                          <input required type="text" name="PostpaidSimCash" id="PostpaidSimCash" style="padding:5px; width:300px">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-sm-1 col-form-label"></label>
+                        <div class="col-sm-4">
+                            <button type="submit" class="btn btn-primary" >Submit</button>
+                        </div>
+                    </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+        </div>
+      </div>
+    </div>
+</section>
+{% endblock %}
