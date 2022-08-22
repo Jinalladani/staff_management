@@ -1,0 +1,168 @@
+{% extends 'adminbash.html' %}
+{% load static %}
+{% block content %}
+<link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<style>
+.home-content .sales-boxes .recent-sales{
+  width: 100%;
+  background: #fff;
+  padding: 20px 30px;
+  margin: 0 20px;
+  border-radius: 12px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+</style>
+<section class="home-section">
+    <nav>
+        <div class="sidebar-button">
+            <i class='bx bx-menu sidebarBtn'></i>
+            <span class="dashboard">STAFF LIST</span>
+        </div>
+        <div class="search-box">
+            <input type="text" placeholder="Search...">
+            <i class='bx bx-search'></i>
+        </div>
+        <div class="profile-details">
+            <i class="fa fa-user" aria-hidden="true" style="margin-left:40px;"></i>
+            <form action="{% url 'adminlogout' %}" method="post" id="my_form">
+            {% csrf_token %}
+            <button type="submit" ></button>
+            <a href="javascript:{}" onclick="document.getElementById('my_form').submit();"style="margin-left:10px; text-decoration:none;"> Logout </a>
+            </form>
+        </div>
+    </nav>
+
+    <div class="home-content">
+        <div class="sales-boxes">
+            <div class="recent-sales box">
+                <div class="title">New Staff Added</div>
+                <hr>
+                <div class="sales-details">
+                    <form method="POST" class="post-form" action="{% url 'addnewStaff' %}">
+                        {% csrf_token %}
+                        <div class="container">
+                            <br>
+                            <div class="form-group row">
+
+                            <div class="form-group row">
+                                    <label class="col-sm-2 col-form-label">Station Id :</label>
+                                    <div class="col-sm-4">
+                                        <input type="text" class="form-control" name="session_id" required
+                                               id="session_id" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-sm-2 col-form-label">SSA :</label>
+                                    <div class="col-sm-4">
+                                        <input type="text" class="form-control" name="ssa" required
+                                               id="ssa"/>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-sm-2 col-form-label">CSC:</label>
+                                    <div class="col-sm-4">
+                                        <input type="text" class="form-control" name="csc"
+                                               id="csc" required/>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-sm-2 col-form-label">User Id :</label>
+                                    <div class="col-sm-4">
+                                        <input type="text" class="form-control" name="user_id" required
+                                               id="user_id" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-sm-2 col-form-label">Machine Id :</label>
+                                    <div class="col-sm-4">
+                                        <input type="text" class="form-control" name="machine_id" required
+                                               id="machine_id" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-sm-2 col-form-label">UserName:</label>
+                                    <div class="col-sm-4">
+                                        <input type="text" class="form-control" name="username"
+                                               id="username" required maxlength="20"/>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-sm-2 col-form-label">Email:</label>
+                                    <div class="col-sm-4">
+                                        <input type="text" class="form-control" name="email"
+                                               id="email" required />
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-sm-2 col-form-label">BA Aadhar Email:</label>
+                                    <div class="col-sm-4">
+                                        <input type="text" class="form-control" name="HODEmail"
+                                               id="HODEmail" required />
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-sm-2 col-form-label">CSC Incharge Email:</label>
+                                    <div class="col-sm-4">
+                                        <input type="text" class="form-control" name="CSCInchargeEmail"
+                                               id="CSCInchargeEmail" required />
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-sm-2 col-form-label">Password:</label>
+                                    <div class="col-sm-4">
+                                        <input type="password" class="form-control" name="password"
+                                               id="password" required />
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-sm-2 col-form-label">Phone No:</label>
+                                    <div class="col-sm-4">
+                                        <input type="text" class="form-control" name="phone_no" required
+                                               id="phone_no" required maxlength="10"/>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-sm-2 col-form-label">Joining Date:</label>
+                                    <div class="col-sm-4">
+                                        <input type="Date" class="form-control" name="joining_date" required
+                                               id="joining_date" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-sm-2 col-form-label">End Date:</label>
+                                    <div class="col-sm-4">
+                                        <input type="Date"  class="form-control" name="end_date"
+                                               id="end_date" />
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group row">
+                                    <label class="col-sm-1 col-form-label"></label>
+                                    <div class="col-sm-4">
+                                        <button type="submit" class="btn btn-success btn-lg">Submit</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
